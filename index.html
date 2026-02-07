@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>45-Sonli Maktab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header va Navigation */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23667eea" width="1200" height="600"/><path fill="%23764ba2" opacity="0.3" d="M0 300L50 283.3C100 266.7 200 233.3 300 233.3C400 233.3 500 266.7 600 283.3C700 300 800 300 900 283.3C1000 266.7 1100 233.3 1150 216.7L1200 200V600H1150C1100 600 1000 600 900 600C800 600 700 600 600 600C500 600 400 600 300 600C200 600 100 600 50 600H0V300Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section umumiy */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        /* Biz haqimizda */
+        .about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 400px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        /* Statistika */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* O'qituvchilar */
+        .teachers {
+            background: white;
+        }
+
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .teacher-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .teacher-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .teacher-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .teacher-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .teacher-subject {
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        /* Yangiliklar */
+        .news {
+            background: #f8f9fa;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .news-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-date {
+            color: #667eea;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Galereya */
+        .gallery {
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 200px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Aloqa */
+        .contact {
+            background: #f8f9fa;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats,
+            .teachers-grid,
+            .news-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🎓 45-Sonli Maktab</div>
+            <ul class="nav-links">
+                <li><a href="#home">Bosh sahifa</a></li>
+                <li><a href="#about">Biz haqimizda</a></li>
+                <li><a href="#teachers">O'qituvchilar</a></li>
+                <li><a href="#news">Yangiliklar</a></li>
+                <li><a href="#gallery">Galereya</a></li>
+                <li><a href="#contact">Aloqa</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Bilim Maktabiga Xush Kelibsiz</h1>
+            <p>Zamonaviy ta'lim va yorqin kelajak sari birinchi qadam</p>
+            <a href="#contact" class="btn">Bog'lanish</a>
+        </div>
+    </section>
+
+    <!-- Biz haqimizda -->
+    <section id="about" class="about">
+           <h2>Biz haqimizda</h2>
+    <div class="about-content">
+        <div class="about-text">
+            <p><strong>Bilim Maktabi</strong> — zamonaviy ta’lim texnologiyalari va milliy qadriyatlarni uyg‘unlashtirgan ilg‘or ta’lim muassasasidir.</p>
+            <p>Biz har bir o‘quvchining individual qobiliyatlarini aniqlash, ularni rivojlantirish hamda ijodiy va intellektual salohiyatini oshirishga alohida e’tibor qaratamiz.</p>
+            <p>Tajribali va yuqori malakali o‘qituvchilar, zamonaviy o‘qitish usullari hamda qulay ta’lim muhiti — bularning barchasi farzandlaringizning yorqin kelajagi uchun!</p>
+        </div>
+        <div class="about-image">
+            🏫
+        </div>
+    </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">O'quvchilar</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">45+</div>
+                <div class="stat-label">O'qituvchilar</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Yillik tajriba</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Muvaffaqiyat</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O'qituvchilar -->
+    <section id="teachers" class="teachers">
+        <h2>Bizning O'qituvchilar</h2>
+        <div class="teachers-grid">
+            <div class="teacher-card">
+                <div class="teacher-image">👨‍🏫</div>
+                <div class="teacher-info">
+                    <div class="teacher-name">Aliyev Sardor</div>
+                    <div class="teacher-subject">Matematika o'qituvchisi</div>
+                </div>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-image">👩‍🏫</div>
+                <div class="teacher-info">
+                    <div class="teacher-name">Karimova Nilufar</div>
+                    <div class="teacher-subject">Ona tili va adabiyot</div>
+                </div>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-image">👨‍🏫</div>
+                <div class="teacher-info">
+                    <div class="teacher-name">Rahimov Javohir</div>
+                    <div class="teacher-subject">Ingliz tili</div>
+                </div>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-image">👩‍🏫</div>
+                <div class="teacher-info">
+                    <div class="teacher-name">Yusupova Malika</div>
+                    <div class="teacher-subject">Fizika o'qituvchisi</div>
+                </div>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-image">👨‍🏫</div>
+                <div class="teacher-info">
+                    <div class="teacher-name">Toshmatov Otabek</div>
+                    <div class="teacher-subject">Informatika</div>
+                </div>
+            </div>
+            <div class="teacher-card">
+                <div class="teacher-image">👩‍🏫</div>
+                <div class="teacher-info">
+                    <div class="teacher-name">Azimova Dilnoza</div>
+                    <div class="teacher-subject">Kimyo o'qituvchisi</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Yangiliklar -->
+    <section id="news" class="news">
+        <h2>So'nggi Yangiliklar</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="news-image">📰</div>
+                <div class="news-content">
+                    <div class="news-date">05 Fevral 2026</div>
+                    <div class="news-title">Respublika olimpiadasi g'oliblari</div>
+                    <p>Maktabimiz o'quvchilari respublika olimpiadasida 5 ta oltin medal qo'lga kiritdi!</p>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-image">🎉</div>
+                <div class="news-content">
+                    <div class="news-date">01 Fevral 2026</div>
+                    <div class="news-title">Yangi zamonaviy laboratoriya</div>
+                    <p>Fizika va kimyo fanlari bo'yicha zamonaviy laboratoriya ochildi.</p>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-image">🏆</div>
+                <div class="news-content">
+                    <div class="news-date">28 Yanvar 2026</div>
+                    <div class="news-title">Sport musobaqalari</div>
+                    <p>Maktablararo futbol musobaqasida birinchi o'rinni egalladi!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galereya -->
+    <section id="gallery" class="gallery">
+        <h2>Foto Galereya</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">📚</div>
+            <div class="gallery-item">🎨</div>
+            <div class="gallery-item">⚽</div>
+            <div class="gallery-item">🔬</div>
+            <div class="gallery-item">💻</div>
+            <div class="gallery-item">🎭</div>
+            <div class="gallery-item">🎵</div>
+            <div class="gallery-item">🏀</div>
+        </div>
+    </section>
+
+    <!-- Aloqa -->
+    <section id="contact" class="contact">
+        <h2>Biz bilan bog'laning</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📍 Manzil</h3>
+                    <p>Namangan viloyati, Uychi tumani, Islomobod mahallasi, A. Temur ko‘chasi, 35-uyda joylashgan.</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📞 Telefon</h3>
+                    <p>+998 71 123 45 67</p>
+                    <p>+998 90 123 45 67</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📧 Email</h3>
+                    <p>info@bilimmaktab.uz</p>
+                    <p>admin@bilimmaktab.uz</p>
+                </div>
+                <div class="contact-item">
+                    <h3>🕐 Ish vaqti</h3>
+                    <p>Dushanba - Shanba: 8:00 - 18:00</p>
+                    <p>Yakshanba: Dam olish kuni</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label>Ismingiz</label>
+                        <input type="text" placeholder="Ismingizni kiriting" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon</label>
+                        <input type="tel" placeholder="+998 90 123 45 67" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Xabar</label>
+                        <textarea placeholder="Xabaringizni yozing..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Yuborish</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Bilim Maktabi. Barcha huquqlar himoyalangan.</p>
+        <p>Zamonaviy ta'lim - yorqin kelajak!</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Xabaringiz muvaffaqiyatli yuborildi! Tez orada siz bilan bog\'lanamiz.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
